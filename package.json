@@ -14,5 +14,10 @@
   "license": "Apache",
   "bugs": {
     "url": "https://github.com/shearichard/assidu-node/issues"
+  },
+  "dependencies": {
+    "express": "~4.12.3",
+    "mongoose": "~4.0.2",
+    "body-parser": "~1.12.3"
   }
 }
