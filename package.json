@@ -1,0 +1,18 @@
+{
+  "name": "assidu-node",
+  "version": "0.0.0",
+  "description": "Track items you want to do every day - implemented in Node ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shearichard/assidu-node.git"
+  },
+  "author": "Richard Shea <rshea@thecubagroup.com> (http://mainlydata.kubadev.com/)",
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/shearichard/assidu-node/issues"
+  }
+}
