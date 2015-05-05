@@ -2,7 +2,10 @@
 
 // // BASE SETUP
 // // =============================================================================
-  
+//
+var mongoose   = require('mongoose');
+mongoose.connect('mongodb://localhost/assidu_node')
+
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
