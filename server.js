@@ -34,37 +34,32 @@ router.get('/', function(req, res) {
     var today = new Date();
     res.json({ message: 'hooray! welcome to our api! Current time is : ' + today.toISOString() });   
 });
-
 // on routes that end in /bears
 // ----------------------------------------------------
-router.route('/bears')
-
-    // create a bear (accessed at POST http://localhost:8080/api/bears)
-    .post(function(req, res) {
-        
-        var bear = new Bear();      // create a new instance of the Bear model
-        bear.name = req.body.name;  // set the bears name (comes from the request)
-
-        // save the bear and check for errors
-        bear.save(function(err) {
-            if (err)
-                res.send(err);
-
-            res.json({ message: 'Bear created!' });
-        });
-        
+router.route('/bears').post(function(req, res) {
+    var bear = new Bear();      // create a new instance of the Bear model
+    bear.name = req.body.name;  // set the bears name (comes from the request)
+    // save the bear and check for errors
+    bear.save(function(err) {
+        if (err){
+            res.send(err);
+        }
+        res.json({ message: 'Bear created!' });
     });
-
-
-
-
-
-// more routes for our API will happen here
+});
+router.route('/bears').get(function(req, res) {
+        Bear.find(function(err, bears) {
+        if (err){
+            res.send(err);
+        }
+        res.json(bears);
+    });
+});
 
 // REGISTER OUR ROUTES -------------------------------
+
 // all of our routes will be prefixed with /api
 app.use('/api', router);
-
 // START THE SERVER
 // =============================================================================
 app.listen(port, "0.0.0.0" );
