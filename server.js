@@ -36,26 +36,50 @@ router.get('/', function(req, res) {
 });
 // on routes that end in /bears
 // ----------------------------------------------------
-router.route('/bears').post(function(req, res) {
-    var bear = new Bear();      // create a new instance of the Bear model
-    bear.name = req.body.name;  // set the bears name (comes from the request)
-    // save the bear and check for errors
-    bear.save(function(err) {
-        if (err){
-            res.send(err);
-        }
-        res.json({ message: 'Bear created!' });
+router.route('/bears')
+    .post(function(req, res) {
+        var bear = new Bear();      // create a new instance of the Bear model
+        bear.name = req.body.name;  // set the bears name (comes from the request)
+        // save the bear and check for errors
+        bear.save(function(err) {
+            if (err){
+                res.send(err);
+            }
+            res.json({ message: 'Bear created!' });
+        });
+    })
+    .get(function(req, res) {
+            Bear.find(function(err, bears) {
+            if (err){
+                res.send(err);
+            }
+            res.json(bears);
+        });
     });
-});
-router.route('/bears').get(function(req, res) {
-        Bear.find(function(err, bears) {
-        if (err){
-            res.send(err);
-        }
-        res.json(bears);
+// on routes that end in /bears/:bear_id
+// ----------------------------------------------------
+router.route('/bears/:bear_id')
+    // get the bear with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
+    .get(function(req, res) {
+        console.log("Fetching the Bear: " + req.params.bear_id)
+        Bear.findById(req.params.bear_id, function(err, bear) {
+            if (err){
+                res.send(err);
+            }
+            res.json(bear);
+        });
+    })
+    .delete(function(req, res) {
+        console.log("Deleting the Bear: " + req.params.bear_id)
+        Bear.remove({
+            _id: req.params.bear_id
+        }, function(err, bear) {
+            if (err){
+                res.send(err);
+            }
+            res.json({ message: 'Successfully deleted' });
+        });
     });
-});
-
 // REGISTER OUR ROUTES -------------------------------
 
 // all of our routes will be prefixed with /api
@@ -63,4 +87,4 @@ app.use('/api', router);
 // START THE SERVER
 // =============================================================================
 app.listen(port, "0.0.0.0" );
-console.log('Magic happens on port ' + port);
+console.log('server.js serving on ' + port);
