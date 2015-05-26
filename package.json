@@ -19,5 +19,8 @@
     "express": "~4.12.3",
     "mongoose": "~4.0.2",
     "body-parser": "~1.12.3"
+  },
+  "devDependencies": {
+    "node-inspector": "^0.10.1"
   }
 }
