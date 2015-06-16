@@ -4,7 +4,7 @@
 //
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/assidu_node')
-var Bear     = require('./app/models/bear');
+var Person     = require('./app/models/person');
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
@@ -28,67 +28,67 @@ router.get('/', function(req, res) {
     var today = new Date();
     res.json({ message: 'hooray! welcome to our api! Current time is : ' + today.toISOString() });   
 });
-// on routes that end in /bears
+// on routes that end in /persons
 // ----------------------------------------------------
-router.route('/bears')
+router.route('/persons')
     .post(function(req, res) {
-        //Insert a Bear            
-        var bear = new Bear();      // create a new instance of the Bear model
-        bear.name = req.body.name;  // set the bears name (comes from the request)
-        // save the bear and check for errors
-        bear.save(function(err) {
+        //Insert a Person            
+        var person = new Person();      // create a new instance of the Person model
+        person.name = req.body.name;  // set the persons name (comes from the request)
+        // save the person and check for errors
+        person.save(function(err) {
             if (err){
                 res.send(err);
             }
-            res.json({ message: 'Bear created!' });
+            res.json({ message: 'Person created!' });
         });
     })
     .get(function(req, res) {
-            Bear.find(function(err, bears) {
+            Person.find(function(err, persons) {
             if (err){
                 res.send(err);
             }
-            res.json(bears);
+            res.json(persons);
         });
     });
-// on routes that end in /bears/:bear_id
+// on routes that end in /persons/:person_id
 // ----------------------------------------------------
-router.route('/bears/:bear_id')
-    // get the bear with that id 
+router.route('/persons/:person_id')
+    // get the person with that id 
     // (accessed at GET 
-    // http://localhost:8080/api/bears/:bear_id)
+    // http://localhost:8080/api/persons/:person_id)
     .get(function(req, res) {
-        console.log("Fetching the Bear: " + req.params.bear_id)
-        Bear.findById(req.params.bear_id, function(err, bear) {
+        console.log("Fetching the Person: " + req.params.person_id)
+        Person.findById(req.params.person_id, function(err, person) {
             if (err){
                 res.send(err);
             }
-            res.json(bear);
+            res.json(person);
         });
     })
-    // update a specific bear - **** it's a PUT not a POST **** //
+    // update a specific person - **** it's a PUT not a POST **** //
     .put(function(req, res) {
-        console.log("Updating the Bear: " + req.params.bear_id)
-        Bear.findById(req.params.bear_id, function(err, bear) {
+        console.log("Updating the Person: " + req.params.person_id)
+        Person.findById(req.params.person_id, function(err, person) {
             if (err){
                 res.send(err);
             }
-            bear.name = req.body.name;  // update the bears info
-            // save the bear
-            bear.save(function(err) {
+            person.name = req.body.name;  // update the persons info
+            // save the person
+            person.save(function(err) {
                 if (err){
                     res.send(err);
                 }
-                res.json({ message: 'Bear updated!' });
+                res.json({ message: 'Person updated!' });
             });
         });
     })
-    // delete a specific bear
+    // delete a specific person
     .delete(function(req, res) {
-        console.log("Deleting the Bear: " + req.params.bear_id)
-        Bear.remove({
-            _id: req.params.bear_id
-        }, function(err, bear) {
+        console.log("Deleting the Person: " + req.params.person_id)
+        Person.remove({
+            _id: req.params.person_id
+        }, function(err, person) {
             if (err){
                 res.send(err);
             }
