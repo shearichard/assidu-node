@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost/assidu_node')
 var Person     = require('./app/models/person');
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
+var path = require('path');
 var bodyParser = require('body-parser');
 var routes = require('./routes'); 
 //var routes = require('routes')(app); 
@@ -15,6 +16,13 @@ var routes = require('./routes');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/api', routes);
+
+app.get('*', function(req, res) {
+    // load the single view file (angular will handle 
+    // the page changes on the front-end)
+    res.sendFile(path.join(__dirname + '/testrig/index.html')); 
+});
+
 var port = process.env.PORT || 8080;        // set our port
 // START THE SERVER
 // =============================================================================
