@@ -14,6 +14,9 @@ Make the directory `testrig` within the repos your current directory and execute
 
 You can then access the page via a browser at localhost:8000 .
 
+## Please note ##
+As of August 2015 the index.html is being swopped out so we can put an angular one in place. This does mean that until that is all working as it should you'll want to swop index-HIDE.html back into index.html .
+
 
 # Remember
 
