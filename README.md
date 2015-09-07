@@ -17,6 +17,8 @@ You can then access the page via a browser at localhost:8000 .
 ## Please note ##
 As of August 2015 the index.html is being swopped out so we can put an angular one in place. This does mean that until that is all working as it should you'll want to swop index-HIDE.html back into index.html .
 
+In an attempt to make this work as an SPA I've now got into the situation where 404's are resulting in the index.html being returned. This is not good and needs fixing.
+
 
 # Remember
 
