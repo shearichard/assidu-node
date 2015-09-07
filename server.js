@@ -4,7 +4,7 @@
 //
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/assidu_node')
-var Person     = require('./app/models/person');
+//var Person     = require('./app/models/person');
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var path = require('path');

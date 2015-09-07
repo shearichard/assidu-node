@@ -1,4 +1,5 @@
 var router    = require('express').Router();        // call express
+var Person     = require('./app/models/person');
 // ROUTES FOR OUR API
 // =============================================================================
 // all access route
