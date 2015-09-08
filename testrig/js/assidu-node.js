@@ -1,10 +1,10 @@
-var assideNodeApp = angular.module('assideNodeApp', []);
+var assiduNodeApp = angular.module('assiduNodeApp', []);
 
 function mainController($scope, $http) {
     $scope.formData = {};
 
     // when landing on the page, get all persons and show them
-    $http.get('/api/persons')
+    $http.get('http://localhost:8080/api/persons')
         .success(function(data) {
             $scope.persons = data;
             console.log(data);
@@ -15,7 +15,7 @@ function mainController($scope, $http) {
 
     // when submitting the add form, send the text to the node API
     $scope.createPerson = function() {
-        $http.post('/api/persons', $scope.formData)
+        $http.post('http://localhost:8080/api/persons', $scope.formData)
             .success(function(data) {
                 $scope.formData = {}; // clear the form so our user is ready to enter another
                 $scope.persons = data;
@@ -28,7 +28,7 @@ function mainController($scope, $http) {
 
     // delete a person after checking it
     $scope.deletePerson = function(id) {
-        $http.delete('/api/persons/' + id)
+        $http.delete('http://localhost:8080/api/persons/' + id)
             .success(function(data) {
                 $scope.persons = data;
                 console.log(data);
