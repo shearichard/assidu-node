@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 app.use('/api', routes);
 
 app.get('*', function(req, res) {
-    // load the single view file (angular will handle 
-    // the page changes on the front-end)
+    //Load the main .html page and allow angular to do its
+    //thing within that page
     res.sendFile(path.join(__dirname + '/testrig/index.html')); 
 });
 
