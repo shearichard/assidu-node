@@ -19,13 +19,13 @@ function mainController($scope, $http) {
             .success(function(data) {
                 $scope.formData = {}; // clear the form so our user is ready to enter another
                 $scope.persons = data;
+                console.log("createPerson in assidu-node.js - SUCCESS");
                 console.log(data);
             })
             .error(function(data) {
                 console.log('Error: ' + data);
             });
     };
-
     // delete a person after checking it
     $scope.deletePerson = function(id) {
         $http.delete('http://localhost:8080/api/persons/' + id)
@@ -37,5 +37,4 @@ function mainController($scope, $http) {
                 console.log('Error: ' + data);
             });
     };
-
 }

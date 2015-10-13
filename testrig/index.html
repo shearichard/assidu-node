@@ -32,39 +32,31 @@
         <div class="jumbotron text-center">
             <h1>I'm very assiduous ! <span class="label label-info">{{ persons.length }}</span></h1>
         </div>
-
         <!-- TODO LIST -->
         <div id="person-list" class="row">
             <div class="col-sm-4 col-sm-offset-4">
-
                 <!-- LOOP OVER THE TODOS IN $scope.persons -->
                 <div class="checkbox" ng-repeat="person in persons">
                     <label>
                         <input type="checkbox" ng-click="deletePerson(person._id)"> {{ person.name }}
                     </label>
                 </div>
-
             </div>
         </div>
-
         <!-- FORM TO CREATE TODOS -->
         <div id="person-form" class="row">
             <div class="col-sm-8 col-sm-offset-2 text-center">
                 <form>
                     <div class="form-group">
-
                         <!-- BIND THIS VALUE TO formData.name IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="Long term this is where you'll enter stuff to assiduous about" ng-model="formData.name">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Enter something to be assiduous about" ng-model="formData.name">
                     </div>
-
-                    <!-- createToDo() WILL CREATE NEW TODOS -->
+                    <!-- createPerson() WILL CREATE NEW Persons -->
                     <button type="submit" class="btn btn-primary btn-lg" ng-click="createPerson()">Add</button>
                 </form>
             </div>
         </div>
-
     </div>
-
 </body>
 </html>
 

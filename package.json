@@ -16,9 +16,10 @@
     "url": "https://github.com/shearichard/assidu-node/issues"
   },
   "dependencies": {
+    "body-parser": "~1.12.3",
+    "cors": "^2.7.1",
     "express": "~4.12.3",
-    "mongoose": "~4.0.2",
-    "body-parser": "~1.12.3"
+    "mongoose": "~4.0.2"
   },
   "devDependencies": {
     "node-inspector": "^0.10.1"

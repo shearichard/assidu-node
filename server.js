@@ -7,9 +7,14 @@ mongoose.connect('mongodb://localhost/assidu_node')
 //var Person     = require('./app/models/person');
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
+var cors       = require('cors');
 var path = require('path');
 var bodyParser = require('body-parser');
 var routes = require('./routes'); 
+
+//Simple Usage (Enable All CORS Requests)
+app.use(cors());
+
 //var routes = require('routes')(app); 
 // configure app to use bodyParser()
 // this will let us get the data from a POST

@@ -19,6 +19,8 @@ router.get('/', function(req, res) {
 router.route('/persons')
     .post(function(req, res) {
         //Insert a Person            
+        var today = new Date();
+        console.log('Post a Person' + today.toISOString()) ;
         var person = new Person();      // create a new instance of the Person model
         person.name = req.body.name;  // set the persons name (comes from the request)
         // save the person and check for errors
@@ -30,6 +32,8 @@ router.route('/persons')
         });
     })
     .get(function(req, res) {
+            var today = new Date();
+            console.log('Get Person' + today.toISOString()) ;
             Person.find(function(err, persons) {
             if (err){
                 res.send(err);
